@@ -8,6 +8,12 @@ server:
 ipython:
 	./env/bin/ipython
 
+mr-server:
+	./env/bin/python part_17.py
+
+mr-client:
+	nc localhost 1337
+
 part_01:
 	./env/bin/python part_01.py
 
@@ -55,3 +61,5 @@ part_15:
 
 part_16:
 	./env/bin/python part_16.py
+
+part_17: mr-server

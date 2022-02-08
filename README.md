@@ -70,3 +70,5 @@ make part_<01-16>
 ### Extras
 
 16. [async queue consumer / producer](./part_16.py)
+
+17. [asyncio Stream API - mini redis](./part_17.py)

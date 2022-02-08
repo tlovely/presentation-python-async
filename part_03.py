@@ -1,5 +1,5 @@
 """
-Awaitables - Coroutines 
+Awaitables - Coroutines
 """
 import asyncio
 

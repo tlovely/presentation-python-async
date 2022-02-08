@@ -17,25 +17,29 @@ async def handle_client(reader, writer):
     client_id = data["client_count"]
     print(f'[client {client_id}] connected')
     while True:
-        request = (await reader.readline()).decode('utf8').strip()
-        print(f'[client {client_id}] Received request {request}'.strip())
+        request = (await reader.readline()).decode('utf8')[:-1]
+        print(f'[client {client_id}] -> {request[:50]}')
         response = 'ERROR'
         try:
-            command, *args = request.split(' ')
+            command, *rest = request.split(' ', 1)
             command = command.upper()
             if command == 'QUIT':
                 break
-            key, *args = args
+            key, *args = rest[0].split(' ', 1)
             if command == 'GET':
-                response = f"OK {cache.get(key, '')}".strip()
+                if key in cache:
+                    response = f"OK {cache.get(key, '')}"
+                else:
+                    response = f"NONE"
             elif command == 'PUT':
                 response = 'OK'
                 cache[key] = args[0]
             elif command == 'DEL':
                 response = 'OK'
                 cache.pop(key, None)
-        except Exception:  # generally bad to do this
-            pass
+        except Exception as e:  # generally bad to do this
+            print(f'[server] {e}')
+        print(f'[client {client_id}] <- {response[:50]}')
         writer.write(f'{response}\n'.encode('utf8'))
         await writer.drain()
     print(f'[client {client_id}] disconnected')

@@ -1,7 +1,14 @@
 """
 Coroutine & Evoking the Event Loop (basic)
 
-A coroutine is the most basic awaitable. 
+Generally, a coroutine is a control structure that 
+encapsulates a unit of work which is designed to co-op with other coroutines by periodically ceding 
+control back to the event loop.
+
+An event loop is the he thing which executes on and decides which coroutine to supply the execution 
+thread to next, once the active coroutine yields control.
+
+A coroutine in python is the most basic awaitable.
 
 It is essentially a generator in python where, internally, yield cedes control back to
 the event loop, and StopIteration signals to the loop that the coroutine has

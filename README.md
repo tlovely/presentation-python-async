@@ -14,6 +14,36 @@ Sync/Async interop is particularly necessary in a language that introduced async
 Python supplies several ways for async code to easily await on blocking functions (from, for instance, db drivers 
 that block on io) without halting the event loop. Some of these techniques are covered in later sections.
 
+## When to use these features?
+
+Whenever the program's performance is constrained by the performance of the hosts I/O subsystem. 
+In other words, I/O bound contexts. This is usually contrasted with CPU bound applications, where
+the applications performance is dependent on the speed of the CPU. If the CPU in question has multple cores,
+the event loop, having a single execution thread, cannot execute multiple coroutines in parallel.
+
+However, Python's async features could still be useful in dispatching and coordinating work between 
+coroutines and different process workers, which can take advantage of multi core CPU's. Python provides some
+useful abstractions (e.g. Executors) which are designed to interop between the event loop and 
+python threads/processes.
+
+## Why not use python multithreading for an IO Bound application?
+
+_NOTE: Generally, the GIL ensures that only one thread can execute at once._
+
+1. There is effectively an event loop anyway, but the operating system decides which thread should execute and for how long.
+2. The operating system doesn't understand how the threads should cooperate. Therefore opens the possiblity of race conditions and unsafe operations on memory unless the program
+   accounts for the unpredictable nature of threaded execution (via locks, queues, etc.). In otherwords, the program has to be written to cooperate after the fact, versus
+   an environment which is inherently cooperative.
+3. Threads have overhead.
+
+Versus async concurrency:
+
+1. The programmer controls context switching between execution units.
+2. The event loop executes in a single thread, and the coroutines must explicitly yield back control making race conditions impossible. Also, since
+   only one coroutine can execute at once, memory access and mutation is incidentally atomic.
+3. One call stack, versus one per thread (in additon to other overhead from OS thread). Also, exceptions are easier to trace, because there is one
+   stack.
+
 ## Setup
 
 ```bash

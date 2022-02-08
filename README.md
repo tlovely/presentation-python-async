@@ -3,7 +3,7 @@
 This is a survey of python's async concurrency features by example.
 
 The purpose of this survey is to demonstrate that using Python's async features isn't difficult, and
-they are simple to use in all the contexts in which io is performed in the language. They can be used
+they are simple to use in all IO bound contexts. They can be used
 simply and to great effect in scripts, existing sync backends, ETLs, wherever.
 
 Most examples necessarily demonstrate how to interop with synchronous code, because all python

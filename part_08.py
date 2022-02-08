@@ -1,10 +1,9 @@
 """
 Implicit Awaitables - Async Iterator
 """
-"""
-Implicit Awaitables - Async Iterators
-"""
 import asyncio
+
+print(__doc__)
 
 loop = asyncio.get_event_loop()
 

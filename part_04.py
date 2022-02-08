@@ -3,11 +3,12 @@ Awaitables - Futures
 """
 import asyncio
 
+print(__doc__)
+
 loop = asyncio.get_event_loop()
 
 
 async def main():
-    print("-- futures --")
     f = asyncio.Future()
     assert f.done() == False
     f.set_result("Future resolved")  # unless we do this, awaiting on f will hang indefinately

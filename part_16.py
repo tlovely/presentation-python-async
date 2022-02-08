@@ -3,6 +3,7 @@ Queue Consumer / Producer
 """
 import asyncio
 
+print(__doc__)
 
 async def consumer(n, queue):
     while True:

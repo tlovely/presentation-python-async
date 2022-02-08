@@ -3,6 +3,8 @@ Implicit Awaitables - Async Context Managers
 """
 import asyncio
 
+print(__doc__)
+
 loop = asyncio.get_event_loop()
 
 

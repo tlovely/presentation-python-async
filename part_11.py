@@ -4,6 +4,8 @@ Concurrency - Async - asyncio.gather (with asyncio.sleep)
 import asyncio
 import time
 
+print(__doc__)
+
 loop = asyncio.get_event_loop()
 
 

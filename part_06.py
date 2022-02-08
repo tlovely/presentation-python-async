@@ -3,11 +3,12 @@ Awaitables - Custom
 """
 import asyncio
 
+print(__doc__)
+
 loop = asyncio.get_event_loop()
 
 
 async def main():
-    print("-- custom --")
     class a:
         def __await__(self):
             yield  # at least one yield is required, otherwise __await__ won't return a generator

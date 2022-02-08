@@ -3,11 +3,12 @@ Awaitables - Tasks
 """
 import asyncio
 
+print(__doc__)
+
 loop = asyncio.get_event_loop()
 
 
 async def main():
-    print("-- tasks --")
     # Takes a coroutine, not just any awaitable. When scheduled, the task
     # will await on the coroutine and will call set_result on itself, or
     # set_exception if an exception occurs

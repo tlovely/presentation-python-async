@@ -4,6 +4,8 @@ Sync / Async - loop.run_in_executor (thread pool, io bound)
 import asyncio
 import requests
 
+print(__doc__)
+
 loop = asyncio.get_event_loop()
 run = loop.run_until_complete
 

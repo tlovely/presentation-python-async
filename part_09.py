@@ -3,6 +3,8 @@ Implicit Awaitables - Async Generators (PEP 525)
 """
 import asyncio
 
+print(__doc__)
+
 loop = asyncio.get_event_loop()
 
 

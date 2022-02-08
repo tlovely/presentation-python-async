@@ -3,6 +3,8 @@ Accessing the event loop
 """
 import asyncio
 
+print(__doc__)
+
 # gets default event loop
 loop = asyncio.get_event_loop()
 

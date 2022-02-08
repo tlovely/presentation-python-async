@@ -3,6 +3,8 @@ Awaitables - Coroutines
 """
 import asyncio
 
+print(__doc__)
+
 loop = asyncio.get_event_loop()
 
 
@@ -12,7 +14,6 @@ async def main():
         await asyncio.sleep(1)
         print("End")
 
-    print("-- coroutines --")
     c = fn()
     await c
     # awaiting on this a second time will result in a RuntimeError because it has

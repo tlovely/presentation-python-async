@@ -10,6 +10,8 @@ and returned in an await expression.
 """
 import asyncio
 
+print(__doc__)
+
 loop = asyncio.get_event_loop()
 
 

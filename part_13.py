@@ -5,6 +5,8 @@ import asyncio
 
 from aiohttp import ClientSession
 
+print(__doc__)
+
 loop = asyncio.get_event_loop()
 run = loop.run_until_complete
 
